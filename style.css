@@ -2,14 +2,22 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 10px;
     justify-content: baseline;
     align-items: center;
+    margin-top: 20px;
 }
 
 #images img {
     width: 200px;
     height: auto;
-    border: 2px solid blue;
+    border: 2px solid rgba(0, 0, 0, 0.527);
     border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.162);
+}
+
+#images img:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.3);
+    transform: scale(1.05);
 }

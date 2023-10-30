@@ -39,14 +39,13 @@ async function helperFunction(query) {
 }
 
 if (typeof window !== "undefined") {
-    const button = document.querySelector("button");
-    button.addEventListener("click", async () => {
-        const url = await getRandomImage("dogs");
-        console.log(url);
-        document.querySelector(
-            "#randomImage"
-        ).innerHTML = `<img src=${url} width="400"/>`;
-    });
+    // const button = document.querySelector("button");
+    // button.addEventListener("click", async () => {
+    //     const url = await getRandomImage("dogs");
+    //     document.querySelector(
+    //         "#randomImage"
+    //     ).innerHTML = `<img src=${url} width="400"/>`;
+    // });
 
     const query = document.querySelector("#query");
     query.addEventListener("change", () => {
