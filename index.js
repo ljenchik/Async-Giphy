@@ -29,8 +29,8 @@ async function getImages(query) {
 }
 
 // Returns an array of 25 urls from the data
-async function helperFunction() {
-    const fetchedArray = await getImages("dogs");
+async function helperFunction(query) {
+    const fetchedArray = await getImages(query);
     const urls = [];
     for (const item of fetchedArray) {
         urls.push(item.images.original.url);
@@ -40,7 +40,6 @@ async function helperFunction() {
 
 if (typeof window !== "undefined") {
     const button = document.querySelector("button");
-    console.log(button);
     button.addEventListener("click", async () => {
         const url = await getRandomImage("dogs");
         console.log(url);
@@ -49,14 +48,19 @@ if (typeof window !== "undefined") {
         ).innerHTML = `<img src=${url} width="400"/>`;
     });
 
-    const buttonForManyImages = document.querySelector("#many");
-    buttonForManyImages.addEventListener("click", async () => {
-        const images = document.querySelector("#images");
-        const urls = await helperFunction();
-        for (const url of urls) {
-            const img = document.createElement("img");
-            img.src = url;
-            images.appendChild(img);
-        }
+    const query = document.querySelector("#query");
+    query.addEventListener("change", () => {
+        const inputValue = query.value;
+
+        const buttonForManyImages = document.querySelector("#many");
+        buttonForManyImages.addEventListener("click", async () => {
+            const images = document.querySelector("#images");
+            const urls = await helperFunction(inputValue);
+            for (const url of urls) {
+                const img = document.createElement("img");
+                img.src = url;
+                images.appendChild(img);
+            }
+        });
     });
 }
