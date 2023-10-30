@@ -1,0 +1,15 @@
+#images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: baseline;
+    align-items: center;
+}
+
+#images img {
+    width: 200px;
+    height: auto;
+    border: 2px solid blue;
+    border-radius: 10px;
+}
