@@ -1,12 +1,10 @@
-// require("dotenv").config();
-// const api_key = process.env.API_KEY;
-// // Print out value of API key stored in .env file
-// console.log(process.env.API_KEY);
+require("dotenv").config();
+const api_key = process.env.API_KEY;
 
-//Gets random data out of 25
+//Gets random gif out of 25
 async function getRandomImage(query) {
     try {
-        const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=MgLakLPlYdchzPhxGysbroEOds8DCqvE&q=${query}&limit=25`;
+        const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${query}&limit=25`;
         const response = await fetch(endpoint);
         const data = await response.json();
         const random = Math.floor(Math.random() * 25 + 1);
@@ -16,10 +14,10 @@ async function getRandomImage(query) {
     }
 }
 
-// Gets 25 pieces of data
+// Gets 25 gifs with a given query
 async function getImages(query) {
     try {
-        const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=MgLakLPlYdchzPhxGysbroEOds8DCqvE&q=${query}&limit=25`;
+        const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${query}&limit=25`;
         const response = await fetch(endpoint);
         const data = await response.json();
         return data.data;
@@ -28,7 +26,7 @@ async function getImages(query) {
     }
 }
 
-// Returns an array of 25 urls from the data
+// Returns an array of 25 gif urls
 async function helperFunction(query) {
     const fetchedArray = await getImages(query);
     const urls = [];
@@ -38,6 +36,7 @@ async function helperFunction(query) {
     return urls;
 }
 
+// Asks for user query
 if (typeof window !== "undefined") {
     const query = document.getElementById("query");
     const images = document.getElementById("images");
