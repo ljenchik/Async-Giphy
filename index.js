@@ -47,13 +47,19 @@ if (typeof window !== "undefined") {
     //     ).innerHTML = `<img src=${url} width="400"/>`;
     // });
 
-    const query = document.querySelector("#query");
+    const query = document.getElementById("query");
+    const images = document.getElementById("images");
+    const buttonForManyImages = document.getElementById("many");
+
+    function empty(element) {
+        element.innerHTML = "";
+    }
+
     query.addEventListener("change", () => {
         const inputValue = query.value;
-
-        const buttonForManyImages = document.querySelector("#many");
         buttonForManyImages.addEventListener("click", async () => {
-            const images = document.querySelector("#images");
+            empty(images);
+            console.log(images);
             const urls = await helperFunction(inputValue);
             for (const url of urls) {
                 const img = document.createElement("img");
@@ -61,5 +67,6 @@ if (typeof window !== "undefined") {
                 images.appendChild(img);
             }
         });
+        query.value = "";
     });
 }
